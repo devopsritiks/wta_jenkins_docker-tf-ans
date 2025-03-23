@@ -1,0 +1,9 @@
+# Use an official Nginx image
+FROM nginx:latest
+
+# Copy the static files to the Nginx server
+COPY . /usr/share/nginx/html
+
+# Expose the frontend port
+EXPOSE 80
+

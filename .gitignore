@@ -1,0 +1,15 @@
+# Ignore all dotfiles except .gitignore and .dockerignore
+.*
+!.gitignore
+!.dockerignore
+
+# Ignore Terraform files
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+
+
+# Ignore IDE-specific files
+.idea/
+

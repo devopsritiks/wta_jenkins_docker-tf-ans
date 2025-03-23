@@ -1,0 +1,6 @@
+avail_zone = "ap-south"
+env_prefix = "test"
+instance_type = "t2.micro"
+ami_id = "ami-0e35ddab05955cf57"
+ssh_key = "ssh-key-1"
+ssh_key_path = "/home/TestUser/.ssh/ssh-key-1.pem"
