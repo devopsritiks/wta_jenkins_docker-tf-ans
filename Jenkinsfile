@@ -24,8 +24,8 @@ pipeline {
         DOCKER_CREDENTIALS_ID = "docker-hub-access-token"
 
         // Git repository details
-        GIT_REPO = "https://github.com/devopsritiks/wta_jenkins_docker.git"
-        GIT_BRANCH = "main"
+        GIT_REPO = "https://github.com/devopsritiks/wta_jenkins_docker-tf-ans.git"
+        GIT_BRANCH = "feature"
     }
 
   
