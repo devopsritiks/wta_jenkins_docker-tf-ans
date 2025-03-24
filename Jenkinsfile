@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    options {
+        cleanWs() // Cleans workspace before and after the build
+    }
 
     parameters {
         booleanParam(name: 'BD_IMG_CHANGED', defaultValue: false, description: 'Set to true if backend image needs to be rebuilt')
