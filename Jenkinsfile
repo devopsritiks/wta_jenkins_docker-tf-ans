@@ -12,7 +12,7 @@ pipeline {
     environment {
         // Docker Hub credentials and repository details
         DOCKER_HUB = "docker.io"
-        DOCKER_USERNAME = "Replace_with_yours"
+        DOCKER_USERNAME = "devopsritiks"
         BACKEND_IMAGE = "${DOCKER_USERNAME}/world-time-app-backend"
         FRONTEND_IMAGE = "${DOCKER_USERNAME}/world-time-app-frontend"
 
