@@ -1,7 +1,6 @@
 pipeline {
     agent any
     options {
-        cleanWs() // Cleans workspace before and after the build
         timeout(time: 30, unit: 'MINUTES') // Timeout to prevent stuck builds
     }
 
@@ -32,6 +31,11 @@ pipeline {
   
 
     stages {
+        stage('Cleanup Before Build') {
+            steps {
+                cleanWs()
+            }
+        }
         stage('Prepare Environment') {
             steps {
                 echo "// Checking Terraform version..."
