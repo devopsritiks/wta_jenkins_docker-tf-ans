@@ -33,26 +33,7 @@ pipeline {
         stage('Prepare Environment') {
             steps {
                 echo "// Checking Terraform version..."
-                sh """
-                                    if ! command -v terraform &> /dev/null; then
-                                        echo "Terraform not found. Installing Terraform..."
-                                        sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
-                                        wget -O- https://apt.releases.hashicorp.com/gpg | \
-                                        gpg --dearmor | \
-                                        sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
-                                        gpg --no-default-keyring \
-                                        --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
-                                        --fingerprint
-                                        echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
-                                        https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
-                                        sudo tee /etc/apt/sources.list.d/hashicorp.list
-                                        sudo apt update
-                                        sudo apt-get install terraform
-                                    else
-                                        echo "Terraform is already installed."
-                                    fi
-                                """
-                sh "terraform --version"
+                sh 'terraform --version'
             }
         }
 
@@ -62,7 +43,6 @@ pipeline {
                 git branch: "${GIT_BRANCH}", url: "${GIT_REPO}"
             }
         }
-
 
         stage('Terraform Apply') {
             steps {
@@ -142,7 +122,7 @@ pipeline {
                 echo "# Updating .env file with latest image tags..."
                 sh """
                     echo "BACKEND_IMAGE_TAG=${IMAGE_TAG_BD}" > .env
-                    echo "FRONTEND_IMAGE_TAG=${IMAGE_TAG_FD}" > .env
+                    echo "FRONTEND_IMAGE_TAG=${IMAGE_TAG_FD}" >> .env
                 """
 
                 echo "# Deploying the application using Docker Compose..."
