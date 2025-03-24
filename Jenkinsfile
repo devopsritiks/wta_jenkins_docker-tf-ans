@@ -2,6 +2,7 @@ pipeline {
     agent any
     options {
         cleanWs() // Cleans workspace before and after the build
+        timeout(time: 30, unit: 'MINUTES') // Timeout to prevent stuck builds
     }
 
     parameters {
@@ -28,9 +29,7 @@ pipeline {
         GIT_BRANCH = "main"
     }
 
-    options {
-        timeout(time: 30, unit: 'MINUTES') // Timeout to prevent stuck builds
-    }
+  
 
     stages {
         stage('Prepare Environment') {
